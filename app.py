@@ -1,5 +1,6 @@
-from fastapi import FastAPI,UploadFile,File
+from fastapi import FastAPI,UploadFile,File,Form
 from fastapi.responses import JSONResponse
+from typing import Annotated
 
 app = FastAPI()
 
@@ -27,7 +28,16 @@ async def images(image : UploadFile = File(...) ):
 
 @app.post("/uploadfile")
 async def create_upload_file(file: UploadFile):
-    return {"filename": file.filename}
+    return {"filename": file.filename , "content-type" : file.content_type}
+   
+
+@app.post("/files/")
+async def create_file(file: Annotated[bytes, File()]):
+    return {"file_size": len(file)}
+
+@app.post("/login/")
+async def login(username: Annotated[str, Form()], password: Annotated[str, Form()]):
+    return {"username": username}
 
 import uvicorn
 uvicorn.run(app)
