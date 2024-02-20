@@ -1,0 +1,14 @@
+## Documentation 
+
+uv file installed : pip install uv
+uv enev : creation of the virtual environment !!
+
+Now , i need to activate the environment : ❌❌
+
+installed the uvicorn package and fastapi 
+
+-> get the instance of the fastapi : app = FastAPI()
+
+// we created 2 routes of our own 1. Home page 2.Contact 
+
+kuch bhi rakhna chaho naam {"image.filename"} 
